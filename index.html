@@ -38,10 +38,27 @@
   --note-bg: #f8f2e7;
   --edit-bg: #f4efe6;
   --hl-color: #fde68a;
-  --reader-font: 'Amariya Bold', 'Readex Pro', system-ui, -apple-system, sans-serif;
-  --reader-size: 23px;
+  --reader-font: 'Readex Pro', system-ui, -apple-system, sans-serif;
+  --reader-size: 19px;
 }
 
+html[data-theme="paper"] {
+  --bg: #fbf7ef;
+  --card: #fffdf8;
+  --ink: #2c241b;
+  --muted: #6e6154;
+  --accent: #8a5a2b;
+  --accent-soft: #f2e6d5;
+  --border: #e6dccb;
+  --ok: #2e6b47;
+  --ok-soft: #e6f3eb;
+  --topbar-bg: rgba(251, 247, 239, 0.94);
+  --tabbar-bg: rgba(255, 253, 248, 0.96);
+  --poem-bg: #faf4e8;
+  --poem-border: #eadec9;
+  --note-bg: #f8f2e7;
+  --edit-bg: #f4efe6;
+}
 html[data-theme="dark"] {
   --bg: #1c1917;
   --card: #26221f;
@@ -92,6 +109,9 @@ html[data-theme="white"] {
 html, body {
   margin: 0;
   padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
   background: var(--bg);
   color: var(--ink);
   font-family: 'Readex Pro', system-ui, -apple-system, sans-serif;
@@ -148,7 +168,7 @@ body {
 .btn-ok { background: var(--ok-soft); color: var(--ok); border-color: #b7dec6; }
 .btn-sm { padding: 4px 9px; font-size: 12px; border-radius: 8px; }
 
-.container { max-width: 820px; margin: 0 auto; padding: 12px 14px 28px; }
+.container { width: 100%; max-width: 820px; margin: 0 auto; padding: 12px 12px 28px; overflow-x: hidden; }
 
 .sec-strip {
   display: flex;
@@ -194,6 +214,9 @@ body {
 .chap-bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 12px; }
 .chap-select {
   flex: 1 1 200px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   padding: 8px 10px;
   border-radius: 10px;
   border: 1px solid var(--border);
@@ -205,6 +228,8 @@ body {
 .nav-row { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin: 10px 0 14px; }
 
 .card {
+  max-width: 100%;
+  overflow-wrap: break-word;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -573,8 +598,8 @@ const HL_COLORS = [
 ];
 
 const FONTS = [
-  { name: "Amariya Bold (المضاف)", val: "'Amariya Bold', 'Readex Pro', serif" },
-  { name: "Readex Pro", val: "'Readex Pro', system-ui, sans-serif" },
+  { name: "Readex Pro (الافتراضي)", val: "'Readex Pro', system-ui, sans-serif" },
+  { name: "Amariya Bold", val: "'Amariya Bold', 'Readex Pro', serif" },
   { name: "Amiri (أميري)", val: "'Amiri', serif" },
   { name: "Scheherazade New (شهرزاد)", val: "'Scheherazade New', serif" },
   { name: "Noto Naskh Arabic (نسخ)", val: "'Noto Naskh Arabic', serif" },
@@ -591,7 +616,7 @@ const DEFAULT_STATE = {
   tab: "read",
   currentBab: BOOK.length ? BOOK[0].bab : "",
   bookmarkBab: "",
-  fontSize: 23,
+  fontSize: 19,
   fontFamily: FONTS[0].val,
   theme: "paper",
   hlColor: HL_COLORS[0].val,
